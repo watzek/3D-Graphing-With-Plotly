@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <head>
+	<style>
+	#title{
+		text-align: center;
+		margin-top: 20px;
+	}
+	</style>
 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="https://cdn.plot.ly/plotly-2.3.0.min.js"></script>
 	<script
@@ -45,7 +51,13 @@
 
 				};
 				var data = [trace1];
-				var layout = {margin: {
+				var layout = {
+					scene: {
+						xaxis:{title: 'Place (x)'},
+						yaxis:{title: 'Knowledge (y)'},
+						zaxis:{title: 'Action (z)'},
+						},
+					margin: {
 					l: 0,
 					r: 0,
 					b: 0,
@@ -75,7 +87,13 @@
 					type: 'scatter3d'
 				};
 				var data = [trace2];
-				var layout = {margin: {
+				var layout = {
+					scene: {
+						xaxis:{title: 'Place (x)'},
+						yaxis:{title: 'Knowledge (y)'},
+						zaxis:{title: 'Action (z)'},
+						},
+					margin: {
 					l: 0,
 					r: 0,
 					b: 0,
@@ -106,7 +124,13 @@
 					type: 'scatter3d'
 				};
 				var data = [trace3];
-				var layout = {margin: {
+				var layout = {
+					scene: {
+						xaxis:{title: 'Place (x)'},
+						yaxis:{title: 'Knowledge (y)'},
+						zaxis:{title: 'Action (z)'},
+						},
+					margin: {
 					l: 0,
 					r: 0,
 					b: 0,
@@ -137,7 +161,13 @@
 					type: 'scatter3d'
 				};
 				var data = [trace4];
-				var layout = {margin: {
+				var layout = {
+					scene: {
+						xaxis:{title: 'Place (x)'},
+						yaxis:{title: 'Knowledge (y)'},
+						zaxis:{title: 'Action (z)'},
+						},
+					margin: {
 					l: 0,
 					r: 0,
 					b: 0,
@@ -167,7 +197,13 @@
 					type: 'scatter3d'
 				};
 				var data = [trace5];
-				var layout = {margin: {
+				var layout = {
+					scene: {
+						xaxis:{title: 'Place (x)'},
+						yaxis:{title: 'Knowledge (y)'},
+						zaxis:{title: 'Action (z)'},
+						},
+					margin: {
 					l: 0,
 					r: 0,
 					b: 0,
@@ -197,7 +233,7 @@
 
 		function showPlotAll(){
 			document.getElementById('plot').innerHTML = "";
-			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
+			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
 				//t1=filterRows(rows, "Ecospirituality")
 				//console.log(r)
 				function unpack(rows, key, filter){
@@ -213,7 +249,7 @@
 					marker: {
 						size: 6,
 						opacity: 0.8,
-						color: 'rgb(153, 204, 255)'
+					//	color: 'rgb(153, 204, 255)'
 					},
 					type: 'scatter3d'
 				};
@@ -226,7 +262,7 @@
 					marker: {
 						size: 6,
 						opacity: 0.8,
-						colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)']
+						//colorway: ['rgb(255, 230, 153)']
 					},
 					type: 'scatter3d'
 				};
@@ -239,7 +275,7 @@
 					marker: {
 						size: 6,
 						opacity: 0.8,
-						colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+						//colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
 					},
 					type: 'scatter3d'
 				};
@@ -252,7 +288,7 @@
 					marker: {
 						size: 6,
 						opacity: 0.8,
-						colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+					//	colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
 					},
 					type: 'scatter3d'
 				};
@@ -265,17 +301,30 @@
 					marker: {
 						size: 6,
 						opacity: 0.8,
-						colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+						//colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
 					},
 					type: 'scatter3d'
 				};
 
 				var data = [trace1, trace2, trace3, trace4, trace5];
 				var layout = {
+					colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)', 'rgb(153, 255, 153)', 'rgb(179, 153, 255)', 'rgb(255, 153, 153)'],
+
 					scene: {
-						xaxis:{title: 'X AXIS TITLE'},
-						yaxis:{title: 'Y AXIS TITLE'},
-						zaxis:{title: 'Z AXIS TITLE'},
+						xaxis:{
+							title: 'Place (x)',
+							//range: [-5, 5],
+						//	nticks: 9,
+
+						},
+						yaxis:{
+							title: 'Knowledge (y)',
+							//range: [-5, 5],
+						},
+						zaxis:{
+							title: 'Action (z)',
+							//range: [-5, 5],
+							},
 						},
 					margin: {
 					l: 0,
@@ -299,14 +348,15 @@
 </head>
 <body>
 	<div class="buttons">
-		<button type="button" id="button1" onclick="showPlot1()">Ecospirituality</button>
-		<button type="button" id="button2" onclick="showPlot2()">Small is Beautiful</button>
-		<button type="button" id="button3" onclick="showPlot3()">Science for Humanity</button>
-		<button type="button" id="button4" onclick="showPlot4()">Indigenous Justice</button>
-		<button type="button" id="button5" onclick="showPlot5()">Ecoscience</button>
-		<button type="button" id="buttonAll" onclick="showPlotAll()">Show all</button>
+		<button type="button" id="Ecospirituality" onclick="showPlot1()">Ecospirituality</button>
+		<button type="button" id="Small is Beautiful" onclick="showPlot2()">Small is Beautiful</button>
+		<button type="button" id="Science for Humanity" onclick="showPlot3()">Science for Humanity</button>
+		<button type="button" id="Indigenous Justice" onclick="showPlot4()">Indigenous Justice</button>
+		<button type="button" id="Ecoscience" onclick="showPlot5()">Ecoscience</button>
+		<button type="button" id="All Ecotypes" onclick="showPlotAll()">Show all</button>
 	</div>
-	<div id='plot' onload="showPlotAll()">
+	<h3 id="title">All Ecotypes</h3>
+	<div id='plot' >
 
 	</div>
 </body>
@@ -315,6 +365,16 @@
 
 $( document ).ready(function() {
 	showPlotAll()
+
+	$("button").click(function(){
+		t=$(this).attr("id");
+		console.log(t);
+		$("#title").text(t);
+
+
+
+
+	});
 
 });
 
