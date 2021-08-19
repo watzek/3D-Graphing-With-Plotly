@@ -42,6 +42,7 @@
 						color: 'rgb(153, 204, 255)'
 					},
 					type: 'scatter3d'
+
 				};
 				var data = [trace1];
 				var layout = {margin: {
@@ -270,11 +271,18 @@
 				};
 
 				var data = [trace1, trace2, trace3, trace4, trace5];
-				var layout = {margin: {
+				var layout = {
+					scene: {
+						xaxis:{title: 'X AXIS TITLE'},
+						yaxis:{title: 'Y AXIS TITLE'},
+						zaxis:{title: 'Z AXIS TITLE'},
+						},
+					margin: {
 					l: 0,
 					r: 0,
 					b: 0,
 					t: 0
+
 				}};
 				Plotly.newPlot('plot', data, layout);
 			});
