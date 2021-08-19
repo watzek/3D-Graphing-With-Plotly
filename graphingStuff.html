@@ -13,17 +13,28 @@
 		var trace4;
 		var trace5;
 
+
+		function filterRows(rows, type){
+			x=rows.filter(function(d){ return d.K5Name == type })
+			console.log(x)
+			return x;
+
+		}
+
 		function showPlot1(){
 			document.getElementById('plot').innerHTML = "";
-			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knum1.csv', function(err, rows){
-				function unpack(rows, key){
-					return rows.map(function(row){return row[key];});
+			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
+				//t1=filterRows(rows, "Ecospirituality")
+				//console.log(r)
+				function unpack(rows, key, filter){
+					f=filterRows(rows,filter)
+					return f.map(function(f){return f[key];});
 				}
 				trace1 = {
 					name: 'Ecospirituality',
-					x:unpack(rows, 'Place (x)'),
-					y:unpack(rows, 'Knowledge (y)'),
-					z:unpack(rows, 'Action (z)'),
+					x:unpack(rows, 'Place (x)', 'Ecospirituality'),
+					y:unpack(rows, 'Knowledge (y)', 'Ecospirituality'),
+					z:unpack(rows, 'Action (z)', 'Ecospirituality'),
 					mode: 'markers',
 					marker: {
 						size: 5,
@@ -166,7 +177,7 @@
 			return true;
 		}
 
-		function showPlotAll(){
+		function showPlotA(){
 			document.getElementById('plot').innerHTML = "";
 			console.log(trace1)
 			var data = [trace1, trace2, trace3, trace4, trace5];
@@ -182,6 +193,98 @@
 			Plotly.newPlot('plot', data, layout);
 			return true;
 		}
+
+		function showPlotAll(){
+			document.getElementById('plot').innerHTML = "";
+			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
+				//t1=filterRows(rows, "Ecospirituality")
+				//console.log(r)
+				function unpack(rows, key, filter){
+					f=filterRows(rows,filter)
+					return f.map(function(f){return f[key];});
+				}
+				trace1 = {
+					name: 'Ecospirituality',
+					x:unpack(rows, 'Place (x)', 'Ecospirituality'),
+					y:unpack(rows, 'Knowledge (y)', 'Ecospirituality'),
+					z:unpack(rows, 'Action (z)', 'Ecospirituality'),
+					mode: 'markers',
+					marker: {
+						size: 6,
+						opacity: 0.8,
+						color: 'rgb(153, 204, 255)'
+					},
+					type: 'scatter3d'
+				};
+				trace2 = {
+					name: 'Small is Beautiful',
+					x:unpack(rows, 'Place (x)', 'Small is Beautiful'),
+					y:unpack(rows, 'Knowledge (y)', 'Small is Beautiful'),
+					z:unpack(rows, 'Action (z)', 'Small is Beautiful'),
+					mode: 'markers',
+					marker: {
+						size: 6,
+						opacity: 0.8,
+						colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)']
+					},
+					type: 'scatter3d'
+				};
+				trace3 = {
+					name: 'Science for Humanity',
+					x:unpack(rows, 'Place (x)', 'Science for Humanity'),
+					y:unpack(rows, 'Knowledge (y)', 'Science for Humanity'),
+					z:unpack(rows, 'Action (z)', 'Science for Humanity'),
+					mode: 'markers',
+					marker: {
+						size: 6,
+						opacity: 0.8,
+						colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+					},
+					type: 'scatter3d'
+				};
+				trace4 = {
+					name: 'Indigenous Justice',
+					x:unpack(rows, 'Place (x)', 'Indigenous Justice'),
+					y:unpack(rows, 'Knowledge (y)', 'Indigenous Justice'),
+					z:unpack(rows, 'Action (z)', 'Indigenous Justice'),
+					mode: 'markers',
+					marker: {
+						size: 6,
+						opacity: 0.8,
+						colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+					},
+					type: 'scatter3d'
+				};
+				trace5 = {
+					name: 'Ecoscience',
+					x:unpack(rows, 'Place (x)', 'Ecoscience'),
+					y:unpack(rows, 'Knowledge (y)', 'Ecoscience'),
+					z:unpack(rows, 'Action (z)', 'Ecoscience'),
+					mode: 'markers',
+					marker: {
+						size: 6,
+						opacity: 0.8,
+						colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+					},
+					type: 'scatter3d'
+				};
+
+				var data = [trace1, trace2, trace3, trace4, trace5];
+				var layout = {margin: {
+					l: 0,
+					r: 0,
+					b: 0,
+					t: 0
+				}};
+				Plotly.newPlot('plot', data, layout);
+			});
+			return true;
+
+
+
+		}
+
+
 
 	</script>
 
