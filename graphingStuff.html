@@ -13,11 +13,11 @@
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
   crossorigin="anonymous"></script>
 	<script>
-		var trace1;
-		var trace2;
-		var trace3;
-		var trace4;
-		var trace5;
+		var ecospirTrace;
+		var sibTrace;
+		var scihumTrace;
+		var ijTrace;
+		var ecosciTrace;
 
 
 		function filterRows(rows, type){
@@ -27,7 +27,7 @@
 
 		}
 
-		function showPlot1(){
+		function ecospirPlot(){
 			document.getElementById('plot').innerHTML = "";
 			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
 				//t1=filterRows(rows, "Ecospirituality")
@@ -36,7 +36,7 @@
 					f=filterRows(rows,filter)
 					return f.map(function(f){return f[key];});
 				}
-				trace1 = {
+				ecospirTrace = {
 					name: 'Ecospirituality',
 					x:unpack(rows, 'Place (x)', 'Ecospirituality'),
 					y:unpack(rows, 'Knowledge (y)', 'Ecospirituality'),
@@ -50,7 +50,7 @@
 					type: 'scatter3d'
 
 				};
-				var data = [trace1];
+				var data = [ecospirTrace];
 				var layout = {
 					scene: {
 						xaxis:{
@@ -76,13 +76,13 @@
 			});
 			return true;
 		}
-		function showPlot2(){
+		function sibPlot(){
 			document.getElementById('plot').innerHTML = "";
 			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knum2.csv', function(err, rows){
 				function unpack(rows, key){
 					return rows.map(function(row){return row[key];});
 				}
-				trace2 = {
+				sibTrace = {
 					name:'Small is Beautiful',
 					x:unpack(rows, 'Place (x)'),
 					y:unpack(rows, 'Knowledge (y)'),
@@ -95,7 +95,7 @@
 					},
 					type: 'scatter3d'
 				};
-				var data = [trace2];
+				var data = [sibTrace];
 				var layout = {
 					scene: {
 						xaxis:{
@@ -122,13 +122,13 @@
 			return true;
 		}
 
-		function showPlot3(){
+		function scihumPlot(){
 			document.getElementById('plot').innerHTML = "";
 			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knum3.csv', function(err, rows){
 				function unpack(rows, key){
 					return rows.map(function(row){return row[key];});
 				}
-				trace3 = {
+				scihumTrace = {
 					name: 'Science for Humanity',
 					x:unpack(rows, 'Place (x)'),
 					y:unpack(rows, 'Knowledge (y)'),
@@ -141,7 +141,7 @@
 					},
 					type: 'scatter3d'
 				};
-				var data = [trace3];
+				var data = [scihumTrace];
 				var layout = {
 					scene: {
 						xaxis:{
@@ -168,13 +168,13 @@
 			return true;
 		}
 
-		function showPlot4(){
+		function ijPlot(){
 			document.getElementById('plot').innerHTML = "";
 			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knum4.csv', function(err, rows){
 				function unpack(rows, key){
 					return rows.map(function(row){return row[key];});
 				}
-				trace4 = {
+				ijTrace = {
 					name: 'Indigenous Justice',
 					x:unpack(rows, 'Place (x)'),
 					y:unpack(rows, 'Knowledge (y)'),
@@ -187,7 +187,7 @@
 					},
 					type: 'scatter3d'
 				};
-				var data = [trace4];
+				var data = [ijTrace];
 				var layout = {
 					scene: {
 						xaxis:{
@@ -213,13 +213,13 @@
 			});
 			return true;
 		}
-		function showPlot5(){
+		function ecosciPlot(){
 			document.getElementById('plot').innerHTML = "";
 			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knum5.csv', function(err, rows){
 				function unpack(rows, key){
 					return rows.map(function(row){return row[key];});
 				}
-				trace5 = {
+				ecosciTrace = {
 					name:'Ecoscience',
 					x:unpack(rows, 'Place (x)'),
 					y:unpack(rows, 'Knowledge (y)'),
@@ -232,7 +232,7 @@
 					},
 					type: 'scatter3d'
 				};
-				var data = [trace5];
+				var data = [ecosciTrace];
 				var layout = {
 					scene: {
 						xaxis:{
@@ -259,22 +259,7 @@
 			return true;
 		}
 
-		function showPlotA(){
-			document.getElementById('plot').innerHTML = "";
-			console.log(trace1)
-			var data = [trace1, trace2, trace3, trace4, trace5];
-			var layout = {margin: {
-				l: 0,
-				r: 0,
-				b: 0,
-				t: 0
-				},
-				colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)', 'rgb(153, 255, 153)', 'rgb(179, 153, 255)', 'rgb(255, 153, 153)'],
-				type: 'scatter3d'
-			};
-			Plotly.newPlot('plot', data, layout);
-			return true;
-		}
+
 
 		function showPlotAll(){
 			document.getElementById('plot').innerHTML = "";
@@ -285,7 +270,7 @@
 					f=filterRows(rows,filter)
 					return f.map(function(f){return f[key];});
 				}
-				trace1 = {
+				ecospirTrace = {
 					name: 'Ecospirituality',
 					x:unpack(rows, 'Place (x)', 'Ecospirituality'),
 					y:unpack(rows, 'Knowledge (y)', 'Ecospirituality'),
@@ -298,7 +283,7 @@
 					},
 					type: 'scatter3d'
 				};
-				trace2 = {
+				sibTrace = {
 					name: 'Small is Beautiful',
 					x:unpack(rows, 'Place (x)', 'Small is Beautiful'),
 					y:unpack(rows, 'Knowledge (y)', 'Small is Beautiful'),
@@ -311,7 +296,7 @@
 					},
 					type: 'scatter3d'
 				};
-				trace3 = {
+				scihumTrace = {
 					name: 'Science for Humanity',
 					x:unpack(rows, 'Place (x)', 'Science for Humanity'),
 					y:unpack(rows, 'Knowledge (y)', 'Science for Humanity'),
@@ -324,7 +309,7 @@
 					},
 					type: 'scatter3d'
 				};
-				trace4 = {
+				ijTrace = {
 					name: 'Indigenous Justice',
 					x:unpack(rows, 'Place (x)', 'Indigenous Justice'),
 					y:unpack(rows, 'Knowledge (y)', 'Indigenous Justice'),
@@ -337,7 +322,7 @@
 					},
 					type: 'scatter3d'
 				};
-				trace5 = {
+				ecosciTrace = {
 					name: 'Ecoscience',
 					x:unpack(rows, 'Place (x)', 'Ecoscience'),
 					y:unpack(rows, 'Knowledge (y)', 'Ecoscience'),
@@ -351,7 +336,7 @@
 					type: 'scatter3d'
 				};
 
-				var data = [trace1, trace2, trace3, trace4, trace5];
+				var data = [sibTrace, ecosciTrace, ecospirTrace, ijTrace, scihumTrace  ];
 				var layout = {
 
 
@@ -360,7 +345,7 @@
 				    x: 1,
 				    y: 0.5
 				  },
-					colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)', 'rgb(153, 255, 153)', 'rgb(179, 153, 255)', 'rgb(255, 153, 153)'],
+					colorway: ['rgb(255, 230, 153)','rgb(255, 153, 153)','rgb(153, 204, 255)','rgb(179, 153, 255)', 'rgb(153, 255, 153)'],
 
 					scene: {
 						xaxis:{
@@ -398,14 +383,14 @@
 </head>
 <body>
 	<div class="buttons">
-		<button type="button" id="Small is Beautiful" onclick="showPlot2()">Small is Beautiful</button>
-		<button type="button" id="Ecoscience" onclick="showPlot5()">Ecoscience</button>
-		<button type="button" id="Ecospirituality" onclick="showPlot1()">Ecospirituality</button>
-		<button type="button" id="Indigenous Justice" onclick="showPlot4()">Indigenous Justice</button>
-		<button type="button" id="Science for Humanity" onclick="showPlot3()">Science for Humanity</button>
-		<button type="button" id="All Ecotypes" onclick="showPlotAll()">Show all</button>
+		<button type="button" id="Small is Beautiful" onclick="sibPlot()">Small is Beautiful</button>
+		<button type="button" id="Ecoscience" onclick="ecosciPlot()">Ecoscience</button>
+		<button type="button" id="Ecospirituality" onclick="ecospirPlot()">Ecospirituality</button>
+		<button type="button" id="Indigenous Justice" onclick="ijPlot()">Indigenous Justice</button>
+		<button type="button" id="Science for Humanity" onclick="scihumPlot()">Science for Humanity</button>
+		<button type="button" id="All EcoTypes" onclick="showPlotAll()">Show all</button>
 	</div>
-	<h3 id="title">All Ecotypes</h3>
+	<h3 id="title">All EcoTypes</h3>
 	<div id='plot' >
 
 	</div>
