@@ -22,7 +22,7 @@
 
 		function filterRows(rows, type){
 			x=rows.filter(function(d){ return d.K5Name == type })
-			console.log(x)
+			//console.log(x)
 			return x;
 
 		}
@@ -353,6 +353,13 @@
 
 				var data = [trace1, trace2, trace3, trace4, trace5];
 				var layout = {
+
+
+					showlegend: true,
+				  legend: {
+				    x: 1,
+				    y: 0.5
+				  },
 					colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)', 'rgb(153, 255, 153)', 'rgb(179, 153, 255)', 'rgb(255, 153, 153)'],
 
 					scene: {
@@ -391,11 +398,11 @@
 </head>
 <body>
 	<div class="buttons">
-		<button type="button" id="Ecospirituality" onclick="showPlot1()">Ecospirituality</button>
 		<button type="button" id="Small is Beautiful" onclick="showPlot2()">Small is Beautiful</button>
-		<button type="button" id="Science for Humanity" onclick="showPlot3()">Science for Humanity</button>
-		<button type="button" id="Indigenous Justice" onclick="showPlot4()">Indigenous Justice</button>
 		<button type="button" id="Ecoscience" onclick="showPlot5()">Ecoscience</button>
+		<button type="button" id="Ecospirituality" onclick="showPlot1()">Ecospirituality</button>
+		<button type="button" id="Indigenous Justice" onclick="showPlot4()">Indigenous Justice</button>
+		<button type="button" id="Science for Humanity" onclick="showPlot3()">Science for Humanity</button>
 		<button type="button" id="All Ecotypes" onclick="showPlotAll()">Show all</button>
 	</div>
 	<h3 id="title">All Ecotypes</h3>
