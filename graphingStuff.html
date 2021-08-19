@@ -29,7 +29,7 @@
 
 		function showPlot1(){
 			document.getElementById('plot').innerHTML = "";
-			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
+			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
 				//t1=filterRows(rows, "Ecospirituality")
 				//console.log(r)
 				function unpack(rows, key, filter){
@@ -53,9 +53,18 @@
 				var data = [trace1];
 				var layout = {
 					scene: {
-						xaxis:{title: 'Place (x)'},
-						yaxis:{title: 'Knowledge (y)'},
-						zaxis:{title: 'Action (z)'},
+						xaxis:{
+							title: 'Place (x)',
+							range: [-4, 4]
+						},
+						yaxis:{
+							title: 'Knowledge (y)',
+							range: [-4, 4]
+						},
+						zaxis:{
+							title: 'Action (z)',
+							range: [-4, 4]
+						},
 						},
 					margin: {
 					l: 0,
@@ -69,7 +78,7 @@
 		}
 		function showPlot2(){
 			document.getElementById('plot').innerHTML = "";
-			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knum2.csv', function(err, rows){
+			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knum2.csv', function(err, rows){
 				function unpack(rows, key){
 					return rows.map(function(row){return row[key];});
 				}
@@ -89,9 +98,18 @@
 				var data = [trace2];
 				var layout = {
 					scene: {
-						xaxis:{title: 'Place (x)'},
-						yaxis:{title: 'Knowledge (y)'},
-						zaxis:{title: 'Action (z)'},
+						xaxis:{
+							title: 'Place (x)',
+							range: [-4, 4]
+						},
+						yaxis:{
+							title: 'Knowledge (y)',
+							range: [-4, 4]
+						},
+						zaxis:{
+							title: 'Action (z)',
+							range: [-4, 4]
+						},
 						},
 					margin: {
 					l: 0,
@@ -106,7 +124,7 @@
 
 		function showPlot3(){
 			document.getElementById('plot').innerHTML = "";
-			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knum3.csv', function(err, rows){
+			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knum3.csv', function(err, rows){
 				function unpack(rows, key){
 					return rows.map(function(row){return row[key];});
 				}
@@ -126,9 +144,18 @@
 				var data = [trace3];
 				var layout = {
 					scene: {
-						xaxis:{title: 'Place (x)'},
-						yaxis:{title: 'Knowledge (y)'},
-						zaxis:{title: 'Action (z)'},
+						xaxis:{
+							title: 'Place (x)',
+							range: [-4, 4]
+						},
+						yaxis:{
+							title: 'Knowledge (y)',
+							range: [-4, 4]
+						},
+						zaxis:{
+							title: 'Action (z)',
+							range: [-4, 4]
+						},
 						},
 					margin: {
 					l: 0,
@@ -143,7 +170,7 @@
 
 		function showPlot4(){
 			document.getElementById('plot').innerHTML = "";
-			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knum4.csv', function(err, rows){
+			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knum4.csv', function(err, rows){
 				function unpack(rows, key){
 					return rows.map(function(row){return row[key];});
 				}
@@ -163,9 +190,18 @@
 				var data = [trace4];
 				var layout = {
 					scene: {
-						xaxis:{title: 'Place (x)'},
-						yaxis:{title: 'Knowledge (y)'},
-						zaxis:{title: 'Action (z)'},
+						xaxis:{
+							title: 'Place (x)',
+							range: [-4, 4]
+						},
+						yaxis:{
+							title: 'Knowledge (y)',
+							range: [-4, 4]
+						},
+						zaxis:{
+							title: 'Action (z)',
+							range: [-4, 4]
+						},
 						},
 					margin: {
 					l: 0,
@@ -179,7 +215,7 @@
 		}
 		function showPlot5(){
 			document.getElementById('plot').innerHTML = "";
-			d3.csv('https://raw.githubusercontent.com/HaleyRovner/3D-Graphing-With-Plotly/main/knum5.csv', function(err, rows){
+			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knum5.csv', function(err, rows){
 				function unpack(rows, key){
 					return rows.map(function(row){return row[key];});
 				}
@@ -199,9 +235,18 @@
 				var data = [trace5];
 				var layout = {
 					scene: {
-						xaxis:{title: 'Place (x)'},
-						yaxis:{title: 'Knowledge (y)'},
-						zaxis:{title: 'Action (z)'},
+						xaxis:{
+							title: 'Place (x)',
+							range: [-4, 4]
+						},
+						yaxis:{
+							title: 'Knowledge (y)',
+							range: [-4, 4]
+						},
+						zaxis:{
+							title: 'Action (z)',
+							range: [-4, 4]
+						},
 						},
 					margin: {
 					l: 0,
@@ -313,18 +358,16 @@
 					scene: {
 						xaxis:{
 							title: 'Place (x)',
-							//range: [-5, 5],
-						//	nticks: 9,
-
+							range: [-4, 4]
 						},
 						yaxis:{
 							title: 'Knowledge (y)',
-							//range: [-5, 5],
+							range: [-4, 4]
 						},
 						zaxis:{
 							title: 'Action (z)',
-							//range: [-5, 5],
-							},
+							range: [-4, 4]
+						},
 						},
 					margin: {
 					l: 0,
