@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<head>
+	<style>
+	#title{
+		text-align: center;
+		margin-top: 20px;
+	}
+	</style>
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="https://cdn.plot.ly/plotly-2.3.0.min.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+	<script>
+		var ecospirTrace;
+		var sibTrace;
+		var scihumTrace;
+		var ijTrace;
+		var ecosciTrace;
+
+
+		function filterRows(rows, type){
+			x=rows.filter(function(d){ return d.K5Name == type })
+			console.log(x)
+			return x;
+
+		}
+
+    function anyPlot(type){
+      document.getElementById('plot').innerHTML = "";
+			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
+				//t1=filterRows(rows, "Ecospirituality")
+				//console.log(r)
+        console.log(rows)
+				function unpack(rows, key, filter){
+					f=filterRows(rows,filter)
+					return f.map(function(f){return f[key];});
+				}
+
+        switch(type){
+
+          case "ecoscience":
+          plotData = {
+            name:'Ecoscience',
+            x:unpack(rows, 'Place (x)', 'Ecoscience'),
+            y:unpack(rows, 'Knowledge (y)', 'Ecoscience'),
+            z:unpack(rows, 'Action (z)', 'Ecoscience'),
+            mode: 'markers',
+            marker: {
+              size: 5,
+              opacity: 0.8,
+              color: 'rgb(255, 153, 153)'
+            },
+            type: 'scatter3d'
+          };
+          break;
+
+          case "ecospirituality":
+          plotData = {
+  					name: 'Ecospirituality',
+  					x:unpack(rows, 'Place (x)', 'Ecospirituality'),
+  					y:unpack(rows, 'Knowledge (y)', 'Ecospirituality'),
+  					z:unpack(rows, 'Action (z)', 'Ecospirituality'),
+  					mode: 'markers',
+  					marker: {
+  						size: 5,
+  						opacity: 0.8,
+  						color: 'rgb(153, 204, 255)'
+  					},
+  					type: 'scatter3d'
+
+  				};
+          break;
+
+          case "sib":
+          console.log("sib?")
+          plotData = {
+            name:'Small is Beautiful',
+            x:unpack(rows, 'Place (x)', 'Small is Beautiful'),
+            y:unpack(rows, 'Knowledge (y)', 'Small is Beautiful'),
+            z:unpack(rows, 'Action (z)', 'Small is Beautiful'),
+            mode: 'markers',
+            marker: {
+              size: 5,
+              opacity: 0.8,
+              color: 'rgb(255, 230, 153)'
+            },
+            type: 'scatter3d'
+          };
+          break;
+
+
+          case "scihum":
+
+          plotData = {
+            name: 'Science for Humanity',
+            x:unpack(rows, 'Place (x)', 'Science for Humanity'),
+            y:unpack(rows, 'Knowledge (y)', 'Science for Humanity'),
+            z:unpack(rows, 'Action (z)', 'Science for Humanity'),
+            mode: 'markers',
+            marker: {
+              size: 5,
+              opacity: 0.8,
+              color: 'rgb(153, 255, 153)'
+            },
+            type: 'scatter3d'
+          };
+
+          break;
+
+
+          case "ij":
+
+          plotData = {
+            name: 'Indigenous Justice',
+            x:unpack(rows, 'Place (x)', 'Indigenous Justice'),
+            y:unpack(rows, 'Knowledge (y)', 'Indigenous Justice'),
+            z:unpack(rows, 'Action (z)', 'Indigenous Justice'),
+            mode: 'markers',
+            marker: {
+              size: 5,
+              opacity: 0.8,
+              color: 'rgb(179, 153, 255)'
+            },
+            type: 'scatter3d'
+          };
+
+
+          break;
+
+        }
+
+
+
+
+
+				var data = [plotData];
+				var layout = {
+					showlegend: true,
+				  legend: {
+				    x: 1,
+				    y: 0.5
+				  },
+					scene: {
+						xaxis:{
+							title: 'Place (x)',
+							range: [-4, 4]
+						},
+						yaxis:{
+							title: 'Knowledge (y)',
+							range: [-4, 4]
+						},
+						zaxis:{
+							title: 'Action (z)',
+							range: [-4, 4]
+						},
+						},
+					margin: {
+					l: 0,
+					r: 0,
+					b: 0,
+					t: 0
+				}};
+				Plotly.newPlot('plot', data, layout);
+			});
+			return true;
+
+
+    }
+
+
+
+
+
+
+
+
+
+		function showPlotAll(){
+			document.getElementById('plot').innerHTML = "";
+			d3.csv('https://raw.githubusercontent.com/watzek/3D-Graphing-With-Plotly/main/knumAll.csv', function(err, rows){
+				//t1=filterRows(rows, "Ecospirituality")
+				//console.log(r)
+				function unpack(rows, key, filter){
+					f=filterRows(rows,filter)
+					return f.map(function(f){return f[key];});
+				}
+				ecospirTrace = {
+					name: 'Ecospirituality',
+					x:unpack(rows, 'Place (x)', 'Ecospirituality'),
+					y:unpack(rows, 'Knowledge (y)', 'Ecospirituality'),
+					z:unpack(rows, 'Action (z)', 'Ecospirituality'),
+					mode: 'markers',
+					marker: {
+						size: 5,
+						opacity: 0.8,
+					//	color: 'rgb(153, 204, 255)'
+					},
+					type: 'scatter3d'
+				};
+				sibTrace = {
+					name: 'Small is Beautiful',
+					x:unpack(rows, 'Place (x)', 'Small is Beautiful'),
+					y:unpack(rows, 'Knowledge (y)', 'Small is Beautiful'),
+					z:unpack(rows, 'Action (z)', 'Small is Beautiful'),
+					mode: 'markers',
+					marker: {
+						size: 5,
+						opacity: 0.8,
+						//colorway: ['rgb(255, 230, 153)']
+					},
+					type: 'scatter3d'
+				};
+				scihumTrace = {
+					name: 'Science for Humanity',
+					x:unpack(rows, 'Place (x)', 'Science for Humanity'),
+					y:unpack(rows, 'Knowledge (y)', 'Science for Humanity'),
+					z:unpack(rows, 'Action (z)', 'Science for Humanity'),
+					mode: 'markers',
+					marker: {
+						size: 5,
+						opacity: 0.8,
+						//colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+					},
+					type: 'scatter3d'
+				};
+				ijTrace = {
+					name: 'Indigenous Justice',
+					x:unpack(rows, 'Place (x)', 'Indigenous Justice'),
+					y:unpack(rows, 'Knowledge (y)', 'Indigenous Justice'),
+					z:unpack(rows, 'Action (z)', 'Indigenous Justice'),
+					mode: 'markers',
+					marker: {
+						size: 5,
+						opacity: 0.8,
+					//	colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+					},
+					type: 'scatter3d'
+				};
+				ecosciTrace = {
+					name: 'Ecoscience',
+					x:unpack(rows, 'Place (x)', 'Ecoscience'),
+					y:unpack(rows, 'Knowledge (y)', 'Ecoscience'),
+					z:unpack(rows, 'Action (z)', 'Ecoscience'),
+					mode: 'markers',
+					marker: {
+						size: 5,
+						opacity: 0.8,
+						//colorway: ['rgb(153, 204, 255)', 'rgb(255, 230, 153)','rgb(153, 255, 153)']
+					},
+					type: 'scatter3d'
+				};
+
+				var data = [sibTrace, ecosciTrace, ecospirTrace, ijTrace, scihumTrace  ];
+				var layout = {
+
+
+					showlegend: true,
+				  legend: {
+				    x: 1,
+				    y: 0.5
+				  },
+					colorway: ['rgb(255, 230, 153)','rgb(255, 153, 153)','rgb(153, 204, 255)','rgb(179, 153, 255)', 'rgb(153, 255, 153)'],
+
+					scene: {
+						xaxis:{
+							title: 'Place (x)',
+							range: [-4, 4]
+						},
+						yaxis:{
+							title: 'Knowledge (y)',
+							range: [-4, 4]
+						},
+						zaxis:{
+							title: 'Action (z)',
+							range: [-4, 4]
+						},
+						},
+					margin: {
+					l: 0,
+					r: 0,
+					b: 0,
+					t: 0
+
+				}};
+				Plotly.newPlot('plot', data, layout);
+			});
+			return true;
+
+
+
+		}
+
+
+
+	</script>
+
+</head>
+<body>
+	<div class="buttons">
+		<button type="button" id="Small is Beautiful" onclick="anyPlot('sib')">Small is Beautiful</button>
+		<button type="button" id="Ecoscience" onclick="anyPlot('ecoscience')">Ecoscience</button>
+		<button type="button" id="Ecospirituality" onclick="anyPlot('ecospirituality')">Ecospirituality</button>
+		<button type="button" id="Indigenous Justice" onclick="anyPlot('ij')">Indigenous Justice</button>
+		<button type="button" id="Science for Humanity" onclick="anyPlot('scihum')">Science for Humanity</button>
+		<button type="button" id="All EcoTypes" onclick="showPlotAll()">Show all</button>
+	</div>
+	<h3 id="title">All EcoTypes</h3>
+	<div id='plot' >
+
+	</div>
+</body>
+
+<script>
+
+$( document ).ready(function() {
+	showPlotAll()
+
+	$("button").click(function(){
+		t=$(this).attr("id");
+		console.log(t);
+		$("#title").text(t);
+
+	});
+
+});
+
+</script>
+
+
+</html>
